@@ -30,7 +30,7 @@ pipeline {
             }
         }
         stage('Regression tests') {
-            parallel {
+            parallel (
                 stage ('chrome') {
                     steps {
                         sh '''
@@ -52,7 +52,7 @@ pipeline {
                         '''
                     }
                 }   
-            }
+            )
         }
         stage('Release to prod') {
             steps {
