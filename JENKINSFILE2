@@ -3,9 +3,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                bat 'python -V'
                 sh '''
-                    echo "Multiline shell steps works too"
+                    echo "Multi-line shell steps works too"
                     python3 -V
                 '''
             }
