@@ -22,14 +22,14 @@ pipeline {
             steps {
                 script {
                     try{
-                        docker image rm -f kamal
+                        docker image rm -f potdar104
                     }catch(Exception e){
                         echo "Error while deleting image"
                     }
                     sh '''
                     docker container prune -f
-                    docker build -t kamal ci/
-                    docker run -td --name hello -p 80:80 kamal
+                    docker build -t potdar104 /home/potdar104/jenkins-tutorials/ci/
+                    docker run -td --name hello -p 80:80 potdar104
                     '''
                 }
             }
