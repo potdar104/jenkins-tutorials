@@ -8,7 +8,7 @@ pipeline {
                 sh 'echo Pre-build'
                 script {
                     try{
-                        sh 'docker ps -q --filter "name=hello" | grep -q . && docker stop hello && docker rm -fv hello'
+                        sh 'sudo docker ps -q --filter "name=hello" | grep -q . && docker stop hello && docker rm -fv hello'
                     }catch(Exception e){
                         echo "No container found!"
                     }
@@ -22,14 +22,14 @@ pipeline {
             steps {
                 script {
                     try{
-                        docker image rm -f potdar104
+                        sudo docker image rm -f potdar104
                     }catch(Exception e){
                         echo "Error while deleting image"
                     }
                     sh '''
-                    docker container prune -f
-                    docker build -t potdar104 /home/potdar104/jenkins-tutorials/ci/
-                    docker run -td --name hello -p 80:80 potdar104
+                    sudo docker container prune -f
+                    sudo docker build -t potdar104 /home/potdar104/jenkins-tutorials/ci/
+                    sudo docker run -td --name hello -p 80:80 potdar104
                     '''
                 }
             }
